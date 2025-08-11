@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AneerCare | El Futuro de tu Ciclo</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    
+    <!-- AOS Animation Library CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        /* Estilo base para el cuerpo y la tipografía */
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            color: #212121; /* Color de texto principal */
+            background-color: #fefefe; /* Fondo blanco */
+        }
+        /* Estilo del botón principal de llamada a la acción */
+        .cta-button {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+        /* Estilo para los títulos de sección que imita el diseño de RENOVA+ */
+        .section-title {
+            font-family: 'Inter', sans-serif;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+        /* Color de acento de AneerCare, similar al de RENOVA+ */
+        .aneercare-accent-color {
+            color: #E50074;
+        }
+        /* Contenedor de notificaciones de 'social proof' */
+        #social-proof-container {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 10000;
+        }
+        /* Popup de notificación individual */
+        .social-proof-popup {
+            background-color: rgba(255, 255, 255, 0.9); /* Blanco con opacidad */
+            backdrop-filter: blur(5px);
+            border: 1px solid #E50074;
+            color: #212121;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            max-width: 300px;
+            animation: slideInUp 0.5s ease-out forwards, slideOutDown 0.5s ease-in 4.5s forwards;
+        }
+        /* Animaciones para las notificaciones */
+        @keyframes slideInUp {
+            from { transform: translateY(100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        @keyframes slideOutDown {
+            from { transform: translateY(0); opacity: 1; }
+            to { transform: translateY(100%); opacity: 0; }
+        }
+        /* Flecha de scroll */
+        .scroll-down-arrow {
+            position: fixed; 
+            bottom: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2.5s infinite;
+            z-index: 50;
+            transition: opacity 0.4s ease-out; 
+            cursor: pointer;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-20px); }
+            60% { transform: translateX(-50%) translateY(-10px); }
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800 overflow-x-hidden">
+
+    <!-- Hero Section -->
+    <section class="relative text-center py-20 md:py-32 px-4 bg-pink-50">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-4xl md:text-6xl font-black tracking-tight leading-tight text-gray-900" data-aos="fade-down">
+                El final de una era. <span class="aneercare-accent-color">El inicio de tu libertad.</span>
+            </h1>
+            <h2 class="mt-6 text-lg md:text-2xl text-gray-600 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+                Descubre AneerCare: Un dispositivo de silicona quirúrgica con certificación FDA que te brinda hasta 12 horas de comodidad, sin olores ni irritaciones. Con una durabilidad de hasta 10 años, es la alternativa que tu cuerpo y el planeta necesitan.
+            </h2>
+            <div class="mt-10" data-aos="zoom-in" data-aos-delay="400">
+                <a href="https://wa.link/8uf9ns" class="cta-button inline-block text-white font-bold text-xl uppercase rounded-lg px-12 py-4 shadow-lg" style="background-color: #E50074;">
+                    Elige tu Plan de Libertad
+                </a>
+            </div>
+        </div>
+        <a href="#problem" class="scroll-down-arrow" aria-label="Desplazarse hacia abajo">
+            <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+        </a>
+    </section>
+
+    <!-- Trust Bar Section (Adaptado del original) -->
+    <section id="trust-bar" class="bg-white py-6">
+        <div class="max-w-5xl mx-auto px-4" data-aos="fade-up">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div class="flex flex-col items-center justify-center">
+                    <p class="font-bold text-gray-500">Material de Alta Calidad: <span class="text-gray-800">Silicona Quirúrgica</span></p>
+                </div>
+                <div class="flex flex-col items-center justify-center">
+                    <p class="font-bold text-gray-500">Certificación: <span class="text-gray-800">FDA Approved</span></p>
+                </div>
+                <div class="flex flex-col items-center justify-center">
+                    <p class="font-bold text-gray-500">Libre de: <span class="text-gray-800">Olores, Irritaciones, Alergias</span></p>
+                </div>
+                <div class="flex flex-col items-center justify-center">
+                    <p class="font-bold text-gray-500">Compromiso: <span class="text-gray-800">Ecológico y Económico</span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section id="problem" class="bg-gray-50 py-16 sm:py-24 px-4">
+        <div class="max-w-3xl mx-auto">
+            <h3 class="text-3xl font-bold text-center mb-12 text-gray-900" data-aos="fade-down">Si eres honesta, esto te suena familiar...</h3>
+            <div class="space-y-6 text-lg">
+                <div class="flex items-start bg-white p-4 rounded-lg shadow" data-aos="fade-right">
+                    <svg class="w-6 h-6 aneercare-accent-color mr-4 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <p>Notas que los <strong class="text-gray-800">productos desechables generan irritación y olores</strong> incómodos.</p>
+                </div>
+                <div class="flex items-start bg-white p-4 rounded-lg shadow" data-aos="fade-left" data-aos-delay="100">
+                    <svg class="w-6 h-6 aneercare-accent-color mr-4 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <p>Te preocupa el <strong class="text-gray-800">gasto constante</strong> en toallas y tampones cada mes.</p>
+                </div>
+                <div class="flex items-start bg-white p-4 rounded-lg shadow" data-aos="fade-right" data-aos-delay="200">
+                    <svg class="w-6 h-6 aneercare-accent-color mr-4 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <p>Sientes que tu período te limita, impidiéndote <strong class="text-gray-800">realizar actividades físicas con total libertad.</strong></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="bg-white py-16 sm:py-24 px-4">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center" data-aos="fade-down">
+                <h3 class="text-4xl section-title text-gray-900">La <span class="aneercare-accent-color">solución inteligente</span> para tu bienestar diario.</h3>
+                <p class="mt-4 text-xl text-gray-600 max-w-3xl mx-auto">La copa menstrual AneerCare te ofrece una alternativa segura, cómoda y amigable con el medio ambiente, permitiéndote vivir tu ciclo sin preocupaciones.</p>
+            </div>
+            <div class="mt-12 grid md:grid-cols-2 gap-12 items-center">
+                <div class="text-center" data-aos="fade-right">
+                    <!-- Image of Menstrual Cup -->
+                    <img src="https://placehold.co/400x400/E50074/FFFFFF?text=Copa+Menstrual" alt="Producto AneerCare Copa Menstrual" class="rounded-lg w-full max-w-sm mx-auto shadow-2xl">
+                </div>
+                <div data-aos="fade-left">
+                    <div class="space-y-6">
+                        <div class="bg-gray-50 shadow p-4 rounded-lg">
+                            <h5 class="font-bold text-lg aneercare-accent-color">✅ Reutilizable por 10 Años</h5>
+                            <p class="text-gray-600">A diferencia de los productos desechables, tu copa dura una década, reduciendo costos y residuos.</p>
+                        </div>
+                        <div class="bg-gray-50 shadow p-4 rounded-lg">
+                            <h5 class="font-bold text-lg aneercare-accent-color">✅ Comodidad y Libertad</h5>
+                            <p class="text-gray-600">Puedes usarla por hasta 12 horas sin tener que preocuparte por cambios constantes, olores o fugas, ideal para cualquier actividad.</p>
+                        </div>
+                        <div class="bg-gray-50 shadow p-4 rounded-lg">
+                            <h5 class="font-bold text-lg aneercare-accent-color">✅ Saludable y Segura</h5>
+                            <p class="text-gray-600">Fabricada con silicona quirúrgica certificada, no altera tu pH natural y evita irritaciones y alergias.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Section -->
+    <section class="bg-gray-50 py-16 sm:py-24 px-4">
+        <div class="max-w-4xl mx-auto text-center" data-aos="fade-down">
+            <h3 class="text-4xl section-title text-gray-900">¿Por qué AneerCare es la <span class="aneercare-accent-color">opción más inteligente</span>?</h3>
+            <p class="mt-4 text-xl text-gray-600">Una decisión que beneficia a tu bolsillo y al planeta.</p>
+            <div class="mt-8 grid md:grid-cols-3 gap-8">
+                <div class="bg-white shadow-lg p-6 rounded-lg" data-aos="fade-right">
+                    <h4 class="text-xl font-bold text-red-600">Toallas y Tampones</h4>
+                    <p class="text-2xl font-bold mt-2 text-gray-900">Gasto recurrente</p>
+                    <p class="text-gray-500">Más de 11.000 productos y 15.6 kg de basura anual.</p>
+                </div>
+                <div class="p-6 rounded-lg text-white shadow-lg flex flex-col justify-center" style="background-color: #E50074;" data-aos="fade-up" data-aos-delay="100">
+                    <h4 class="text-xl font-bold">AneerCare Copa Menstrual</h4>
+                    <p class="text-2xl font-bold mt-2">Inversión Única</p>
+                    <p class="text-pink-100">Solo 5 copas en tu vida. Económico y ecológico.</p>
+                </div>
+                <div class="bg-white shadow-lg p-6 rounded-lg" data-aos="fade-left" data-aos-delay="200">
+                    <h4 class="text-xl font-bold text-red-600">Otros productos</h4>
+                    <p class="text-2xl font-bold mt-2 text-gray-900">Costo Medio</p>
+                    <p class="text-gray-500">Requiere compras frecuentes y no son 100% reutilizables.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section / Packages -->
+    <section id="packages" class="bg-white py-16 sm:py-24 px-4">
+        <div class="max-w-4xl mx-auto text-center">
+            <h3 class="text-4xl section-title text-gray-900" data-aos="fade-down">Elige tu Plan de Bienestar</h3>
+            <p class="mt-6 text-xl text-gray-600" data-aos="fade-up">Comenzar a cuidarte desde adentro es la mejor decisión.</p>
+            
+            <!-- Urgency Container (Stock Counter) -->
+            <div class="mt-10 mb-10 bg-red-600 text-white border-2 border-dashed border-red-400 p-6 rounded-lg max-w-3xl mx-auto grid md:grid-cols-2 gap-6 items-center" data-aos="zoom-in">
+                <div>
+                    <h4 class="text-2xl font-black text-yellow-300 uppercase">¡Date Prisa!</h4>
+                    <p class="mt-2">Debido a la alta demanda, solo quedan:</p>
+                </div>
+                <!-- Stock Counter -->
+                <div class="bg-red-700 p-4 rounded-lg">
+                    <p class="text-5xl font-black text-yellow-300 mt-2"><span id="stock-counter">50</span></p>
+                    <p>unidades con bono disponible.</p>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 text-left text-lg">
+                <!-- Pack 1: Copa Menstrual Individual -->
+                <div class="bg-gray-50 shadow-lg p-6 rounded-lg border border-gray-200 flex flex-col" data-aos="fade-up">
+                    <div class="flex-grow">
+                        <h4 class="font-bold text-xl text-gray-900">Copa Menstrual Individual</h4>
+                        <p class="text-4xl font-black mt-4 aneercare-accent-color">$8.990 CLP</p>
+                        <ul class="mt-4 space-y-2 text-gray-600">
+                            <li>✓ Incluye caja, bolsa y manual de uso.</li>
+                            <li>✓ Elige tu talla y color.</li>
+                            <li>✓ Talla S: stock muy limitado (~20 unidades).</li>
+                        </ul>
+                    </div>
+                    <a href="https://wa.link/8uf9ns" target="_blank" class="mt-6 cta-button block w-full text-center bg-gray-700 text-white font-bold uppercase rounded-lg py-3">Comprar Ahora</a>
+                </div>
+                <!-- Pack 2: Pack Niñas (XS) - Recomendado -->
+                <div class="bg-white shadow-2xl p-6 rounded-lg relative flex flex-col" style="border: 2px solid #E50074;" data-aos="fade-up" data-aos-delay="150">
+                    <span class="absolute top-0 -translate-y-1/2 text-white font-bold uppercase text-sm px-3 py-1 rounded-full" style="background-color: #E50074;">Recomendado</span>
+                    <div class="flex-grow">
+                        <h4 class="font-bold text-xl text-gray-900">Pack Niñas (2 Copas XS)</h4>
+                        <p class="text-4xl font-black mt-4 aneercare-accent-color">$14.990 CLP</p>
+                         <ul class="mt-4 space-y-2 text-gray-600">
+                            <li>✓ 2 Copas talla XS.</li>
+                            <li>✓ Ideal para primeras menstruaciones.</li>
+                            <li>✓ Promoción especial de lanzamiento.</li>
+                        </ul>
+                    </div>
+                    <a href="https://wa.link/8uf9ns" target="_blank" class="mt-6 cta-button block w-full text-center text-white font-bold uppercase rounded-lg py-3" style="background-color: #E50074;">Comprar y Ahorrar</a>
+                </div>
+                <!-- Pack 3: Pack Mamá e Hija (XS+L) -->
+                <div class="bg-gray-50 shadow-lg p-6 rounded-lg border border-gray-200 flex flex-col" data-aos="fade-up" data-aos-delay="300">
+                    <div class="flex-grow">
+                        <h4 class="font-bold text-xl text-gray-900">Pack Dúo Mamá e Hija</h4>
+                        <p class="text-4xl font-black mt-4 aneercare-accent-color">$15.990 CLP</p>
+                         <ul class="mt-4 space-y-2 text-gray-600">
+                            <li>✓ 1 Copa Talla XS y 1 Copa Talla L.</li>
+                            <li>✓ Comparte la libertad con quien más quieres.</li>
+                            <li>✓ La solución perfecta para dos generaciones.</li>
+                        </ul>
+                    </div>
+                    <a href="https://wa.link/8uf9ns" target="_blank" class="mt-6 cta-button block w-full text-center bg-gray-700 text-white font-bold uppercase rounded-lg py-3">Comprar Pack</a>
+                </div>
+            </div>
+            
+            <!-- Adición del pack para amigas treintonas -->
+            <div class="mt-12 text-center" data-aos="fade-up">
+                <h4 class="text-2xl font-bold text-gray-900">¿Amigas Treintonas? ¡Tenemos un pack para ustedes!</h4>
+                <p class="mt-4 text-lg text-gray-600">Consigue 3 copas talla L a un precio especial. ¡Perfecto para compartir y ahorrar!</p>
+                <div class="mt-6">
+                    <a href="https://wa.link/8uf9ns" target="_blank" class="cta-button inline-block text-white font-bold uppercase rounded-lg px-8 py-3" style="background-color: #E50074;">Consultar Pack Amigas Treintonas</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- QR Code Section -->
+    <section class="bg-gray-50 py-16 sm:py-24 px-4">
+        <div class="max-w-xl mx-auto text-center" data-aos="zoom-in">
+            <h3 class="text-3xl md:text-4xl section-title">¡Compra en un <span class="aneercare-accent-color">Click</span>!</h3>
+            <p class="mt-4 text-lg text-gray-600">Escanea este código con tu teléfono para comprar de forma rápida y segura a través de WhatsApp.</p>
+            <div class="mt-8 flex justify-center">
+                <!-- Use the uploaded QR code image -->
+                <img src="wa.link_8uf9ns.png" alt="Código QR para comprar por WhatsApp" class="w-64 h-64 border-4 border-white rounded-lg shadow-lg">
+            </div>
+        </div>
+    </section>
+    
+    <!-- Mayorista Section -->
+    <section class="bg-pink-100 py-16 sm:py-24 px-4">
+        <div class="max-w-4xl mx-auto text-center" data-aos="zoom-in">
+            <h3 class="text-3xl md:text-4xl section-title">¿Buscas <span class="aneercare-accent-color">ventas al por mayor</span>?</h3>
+            <p class="mt-4 text-lg text-gray-600">Si deseas comprar nuestras copas menstruales en grandes cantidades para obtener descuentos especiales, contáctanos directamente para una cotización personalizada.</p>
+            <div class="mt-8">
+                <a href="https://wa.link/8uf9ns" target="_blank" class="cta-button inline-block text-white font-bold uppercase rounded-lg px-8 py-3" style="background-color: #E50074;">Consultar Descuentos por Mayor</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="bg-white py-16 sm:py-24 px-4">
+        <div class="max-w-3xl mx-auto" data-aos="fade-up">
+            <h3 class="text-3xl font-bold text-center mb-12 text-gray-900">Preguntas Frecuentes</h3>
+            <div class="space-y-4" id="faq-container">
+                <div class="bg-gray-50 shadow rounded-lg">
+                    <button class="faq-toggle flex justify-between items-center w-full p-5 text-left font-semibold text-gray-900">
+                        <span>¿Cómo se usa la copa menstrual?</span>
+                        <svg class="w-6 h-6 transform transition-transform text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="faq-content hidden p-5 pt-0 text-gray-600">
+                        <p>El uso es intrauterino. Debes doblarla con la forma que te resulte más cómoda e introducirla en la vagina en dirección al cuello uterino. En el manual de uso que se incluye con tu compra encontrarás diferentes formas de doblado.</p>
+                    </div>
+                </div>
+                <div class="bg-gray-50 shadow rounded-lg">
+                    <button class="faq-toggle flex justify-between items-center w-full p-5 text-left font-semibold text-gray-900">
+                        <span>¿Cómo la esterilizo?</span>
+                        <svg class="w-6 h-6 transform transition-transform text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="faq-content hidden p-5 pt-0 text-gray-600">
+                        <p>Antes y después de tu período, debes hervirla con agua por un máximo de 3 minutos. Durante tu período, puedes limpiarla con solo agua potable. Si tienes el vaso esterilizador, el proceso es aún más sencillo.</p>
+                    </div>
+                </div>
+                <div class="bg-gray-50 shadow rounded-lg">
+                    <button class="faq-toggle flex justify-between items-center w-full p-5 text-left font-semibold text-gray-900">
+                        <span>¿Cuál es la vida útil de la copa?</span>
+                        <svg class="w-6 h-6 transform transition-transform text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="faq-content hidden p-5 pt-0 text-gray-600">
+                        <p>La durabilidad de la copa menstrual es de 10 años, siempre y cuando se realicen los cuidados necesarios y se sigan las instrucciones de limpieza y almacenamiento.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-100 text-center py-10 px-4 text-gray-500 text-sm">
+        <div class="max-w-4xl mx-auto space-y-2">
+            <p class="font-bold text-gray-800"><a href="https://www.instagram.com/aneercare.chile" target="_blank">@aneercare.chile</a></p>
+            <p>+569 45167107</p>
+            <p>Santiago, Chile</p>
+            <p class="mt-4 text-xs">Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Social Proof Container -->
+    <div id="social-proof-container"></div>
+
+    <!-- AOS Animation Library JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+        });
+
+        // JavaScript para el acordeón de FAQ
+        const faqContainer = document.getElementById('faq-container');
+        if (faqContainer) {
+            faqContainer.addEventListener('click', function(e) {
+                const toggle = e.target.closest('.faq-toggle');
+                if (toggle) {
+                    const content = toggle.nextElementSibling;
+                    const icon = toggle.querySelector('svg');
+                    
+                    const allToggles = faqContainer.querySelectorAll('.faq-toggle');
+                    allToggles.forEach(t => {
+                        if (t !== toggle) {
+                            t.nextElementSibling.classList.add('hidden');
+                            t.querySelector('svg').classList.remove('rotate-180');
+                        }
+                    });
+
+                    content.classList.toggle('hidden');
+                    icon.classList.toggle('rotate-180');
+                }
+            });
+        }
+        
+        // JavaScript para el contador de stock (adaptado de RENOVA+)
+        const stockElement = document.getElementById('stock-counter');
+        let stockCount = 20; // Stock para la talla S
+        const minStock = Math.floor(Math.random() * 5) + 2; // Detiene la cuenta en un número aleatorio entre 2 y 6
+
+        function updateStock() {
+            if (stockCount > minStock) {
+                stockCount--;
+                stockElement.textContent = stockCount;
+            } else {
+                stockElement.textContent = `¡Últimas ${minStock} unidades!`;
+            }
+            
+            // Establece un nuevo intervalo aleatorio para la próxima actualización
+            const randomInterval = Math.random() * 12000 + 8000; // 8-20 segundos
+            setTimeout(updateStock, randomInterval);
+        }
+
+        // Inicia el contador de stock después de un retraso inicial
+        setTimeout(updateStock, 10000); // Primera actualización después de 10 segundos
+
+        // JavaScript para ocultar la flecha de scroll
+        const scrollArrow = document.querySelector('.scroll-down-arrow');
+        if (scrollArrow) {
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) { // Oculta después de 50px de scroll
+                    scrollArrow.style.opacity = '0';
+                } else {
+                    scrollArrow.style.opacity = '1';
+                }
+            });
+        }
+
+        // JavaScript para notificaciones de 'social proof'
+        const socialProofContainer = document.getElementById('social-proof-container');
+        const femaleNames = ["Javiera", "Sofía", "Isidora", "Antonella", "Valentina", "Camila", "Fernanda", "Catalina"];
+        const maleNames = ["Benjamín", "Matías", "Joaquín", "Agustín"];
+        const cities = ["Santiago", "Viña del Mar", "Concepción", "La Serena", "Antofagasta", "Temuco", "Rancagua", "Valparaíso"];
+        const actions = [
+            "acaba de comprar el Pack Dúo Mamá e Hija.",
+            "acaba de consultar por precios al por mayor.",
+            "acaba de comprar el Pack Niñas.",
+            "acaba de comprar una Copa Menstrual Individual."
+        ];
+
+        function showSocialProof() {
+            let randomName;
+            // Genera nombres de mujer el 80% del tiempo
+            if (Math.random() > 0.2) {
+                randomName = femaleNames[Math.floor(Math.random() * femaleNames.length)];
+            } else {
+                randomName = maleNames[Math.floor(Math.random() * maleNames.length)];
+            }
+            const randomCity = cities[Math.floor(Math.random() * cities.length)];
+            const randomAction = actions[Math.floor(Math.random() * actions.length)];
+
+            const popup = document.createElement('div');
+            popup.className = 'social-proof-popup';
+            popup.innerHTML = `
+                <p>
+                    <strong class="text-gray-900">${randomName}</strong> de ${randomCity}
+                    <span class="text-gray-600">${randomAction}</span>
+                </p>
+                <p class="text-xs text-gray-400 mt-1">hace ${Math.floor(Math.random() * 59) + 1} segundos</p>
+            `;
+
+            socialProofContainer.appendChild(popup);
+
+            setTimeout(() => {
+                popup.remove();
+            }, 5000); // El popup desaparece después de 5 segundos
+        }
+
+        // Muestra la primera notificación después de un breve retraso y luego lo repite
+        setTimeout(() => {
+            showSocialProof();
+            setInterval(showSocialProof, Math.random() * 10000 + 8000); // Nueva notificación cada 8-18 segundos
+        }, 5000); // Primera notificación después de 5 segundos
+
+    </script>
+
+</body>
+</html>
