@@ -663,7 +663,20 @@
             resultContainer.classList.remove('hidden');
         });
     </script>
-    
+     // JavaScript para la estela de cursor
+    document.addEventListener('mousemove', function(e) {
+        const trail = document.createElement('div');
+        trail.className = 'cursor-trail';
+        document.body.appendChild(trail);
+
+        trail.style.left = e.pageX + 'px';
+        trail.style.top = e.pageY + 'px';
+
+        setTimeout(() => {
+            trail.remove();
+        }, 1000); 
+    });
+</script>
     <!-- Botón flotante de WhatsApp -->
     <a href="https://wa.link/8uf9ns" class="whatsapp-button" target="_blank" aria-label="Hablar con un asesor por WhatsApp">
         <svg fill="currentColor" viewBox="0 0 24 24" class="whatsapp-icon">
@@ -673,6 +686,7 @@
     </a>
 </body>
 </html>
+
 
 
 
