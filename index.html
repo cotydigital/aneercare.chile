@@ -86,28 +86,6 @@
             40% { transform: translateX(-50%) translateY(-20px); }
             60% { transform: translateX(-50%) translateY(-10px); }
         }
-        /* Botón de WhatsApp flotante */
-        .whatsapp-button {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 60px;
-            height: 60px;
-            background-color: #25d366;
-            border-radius: 50%;
-            color: white;
-            font-size: 30px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-            transition: all 0.3s ease;
-        }
-        .whatsapp-button:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 16px rgba(0,0,0,0.35);
-        }
     </style>
 </head>
 <body class="bg-white text-gray-800 overflow-x-hidden">
@@ -242,9 +220,9 @@
                 <!-- Testimonio 1: Comodidad al dormir -->
                 <div class="grid md:grid-cols-3 gap-8 md:gap-12 items-center bg-gray-50 p-6 rounded-lg shadow" data-aos="fade-up">
                     <div class="md:col-span-1 text-center">
-                        <img src="https://placehold.co/150x150/E50074/FFFFFF?text=Testimonio+1" alt="Testimonio de Laura" class="rounded-full mx-auto w-32 h-32 object-cover">
-                        <p class="mt-4 font-bold text-lg text-gray-900">Laura V.</p>
-                        <p class="text-gray-500 text-sm">28 años, Santiago</p>
+                        <img src="images/testimonio1.jpg" alt="Testimonio de Alex" class="rounded-full mx-auto w-32 h-32 object-cover">
+                        <p class="mt-4 font-bold text-lg text-gray-900">Alex.</p>
+                        <p class="text-gray-500 text-sm">22 años, Santiago</p>
                         <div class="flex justify-center mt-2">
                             <span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span class="text-yellow-400">★</span>
                         </div>
@@ -257,24 +235,24 @@
                 <!-- Testimonio 2: Deporte sin irritaciones -->
                 <div class="grid md:grid-cols-3 gap-8 md:gap-12 items-center bg-gray-50 p-6 rounded-lg shadow" data-aos="fade-up" data-aos-delay="100">
                     <div class="md:col-span-1 text-center md:order-2">
-                        <img src="https://placehold.co/150x150/E50074/FFFFFF?text=Testimonio+2" alt="Testimonio de Fernanda" class="rounded-full mx-auto w-32 h-32 object-cover">
-                        <p class="mt-4 font-bold text-lg text-gray-900">Fernanda M.</p>
-                        <p class="text-gray-500 text-sm">31 años, Concepción</p>
+                        <img src="images/testimonio2.jpg" alt="Testimonio de Constanza C." class="rounded-full mx-auto w-32 h-32 object-cover">
+                        <p class="mt-4 font-bold text-lg text-gray-900">Constanza C.</p>
+                        <p class="text-gray-500 text-sm">28 años, Pudahuel</p>
                         <div class="flex justify-center mt-2">
                             <span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span class="text-yellow-400">★</span>
                         </div>
                     </div>
                     <div class="md:col-span-2 text-lg text-gray-700 md:order-1">
-                        <p class="italic">"Soy corredora y antes de cada competencia me preocupaba mi período. Las toallas me rozaban y los tampones eran incómodos. Con la copa AneerCare, puedo entrenar y competir sin irritaciones ni molestias. Es un cambio de juego para cualquier deportista."</p>
+                        <p class="italic">"Juego futbol y antes de cada partido me preocupaba mi período. Las toallas me rozaban y los tampones eran incómodos. Con la copa AneerCare, puedo entrenar y competir sin irritaciones ni molestias. Es un cambio de juego para cualquier deportista."</p>
                     </div>
                 </div>
 
                 <!-- Testimonio 3: Bañarse en el mar -->
                 <div class="grid md:grid-cols-3 gap-8 md:gap-12 items-center bg-gray-50 p-6 rounded-lg shadow" data-aos="fade-up" data-aos-delay="200">
                     <div class="md:col-span-1 text-center">
-                        <img src="https://placehold.co/150x150/E50074/FFFFFF?text=Testimonio+3" alt="Testimonio de Camila" class="rounded-full mx-auto w-32 h-32 object-cover">
-                        <p class="mt-4 font-bold text-lg text-gray-900">Camila R.</p>
-                        <p class="text-gray-500 text-sm">24 años, Viña del Mar</p>
+                        <img src="images/testimonio3.jpg" alt="Testimonio de Nicole M." class="rounded-full mx-auto w-32 h-32 object-cover">
+                        <p class="mt-4 font-bold text-lg text-gray-900">Nico M.</p>
+                        <p class="text-gray-500 text-sm">36 años, Viña del Mar</p>
                         <div class="flex justify-center mt-2">
                             <span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span class="text-yellow-400">★</span>
                         </div>
@@ -450,17 +428,208 @@
             </div>
         </div>
     </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="bg-white py-16 sm:py-24 px-4">
+        <div class="max-w-3xl mx-auto" data-aos="fade-up">
+            <h3 class="text-3xl font-bold text-center mb-12 text-gray-900">Preguntas Frecuentes</h3>
+            <div class="space-y-4" id="faq-container">
+                <div class="bg-gray-50 shadow rounded-lg">
+                    <button class="faq-toggle flex justify-between items-center w-full p-5 text-left font-semibold text-gray-900">
+                        <span>¿Cómo se usa la copa menstrual?</span>
+                        <svg class="w-6 h-6 transform transition-transform text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="faq-content hidden p-5 pt-0 text-gray-600">
+                        <p>El uso es intrauterino. Debes doblarla con la forma que te resulte más cómoda e introducirla en la vagina en dirección al cuello uterino. En el manual de uso que se incluye con tu compra encontrarás diferentes formas de doblado.</p>
+                    </div>
+                </div>
+                <div class="bg-gray-50 shadow rounded-lg">
+                    <button class="faq-toggle flex justify-between items-center w-full p-5 text-left font-semibold text-gray-900">
+                        <span>¿Cómo la esterilizo?</span>
+                        <svg class="w-6 h-6 transform transition-transform text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="faq-content hidden p-5 pt-0 text-gray-600">
+                        <p>Antes y después de tu período, debes hervirla con agua por un máximo de 3 minutos. Durante tu período, puedes limpiarla con solo agua potable. Si tienes el vaso esterilizador, el proceso es aún más sencillo.</p>
+                    </div>
+                </div>
+                <div class="bg-gray-50 shadow rounded-lg">
+                    <button class="faq-toggle flex justify-between items-center w-full p-5 text-left font-semibold text-gray-900">
+                        <span>¿Cuál es la vida útil de la copa?</span>
+                        <svg class="w-6 h-6 transform transition-transform text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="faq-content hidden p-5 pt-0 text-gray-600">
+                        <p>La durabilidad de la copa menstrual es de 10 años, siempre y cuando se realicen los cuidados necesarios y se sigan las instrucciones de limpieza y almacenamiento.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     
-    <!-- WhatsApp Floating Button -->
-    <a href="https://wa.link/8uf9ns" class="whatsapp-button" target="_blank" aria-label="Hablar con un asesor por WhatsApp">
-        <svg fill="currentColor" viewBox="0 0 24 24" class="w-8 h-8">
-            <path d="M12.04 2.1c-5.46 0-9.9 4.44-9.9 9.9 0 1.77.47 3.45 1.34 4.95L2.1 21.9l5.1-1.35c1.49.88 3.2 1.35 4.74 1.35 5.46 0 9.9-4.44 9.9-9.9s-4.44-9.9-9.9-9.9zm0 18.02c-1.47 0-2.88-.41-4.08-1.18l-.29-.17-3.05.81.82-3.03-.19-.3c-.76-1.2-1.17-2.58-1.17-4.07 0-4.5 3.66-8.16 8.16-8.16 2.2 0 4.2.86 5.73 2.39 1.52 1.52 2.38 3.53 2.38 5.73s-0.86 4.2-2.38 5.73c-1.53 1.53-3.53 2.39-5.73 2.39zm3.62-5.7c-0.2-0.1-0.74-0.37-0.84-0.42s-0.19-0.1-0.27-0.1c-0.08 0-0.21 0.04-0.32 0.1s-0.27 0.3-0.33 0.36c-0.07 0.07-0.13 0.08-0.25 0.05-0.11-0.04-0.48-0.17-0.91-0.56-0.33-0.3-0.55-0.5-0.62-0.62s-0.08-0.2-0.08-0.32c0-0.11 0.03-0.2 0.08-0.27 0.06-0.06 0.13-0.16 0.2-0.24 0.09-0.1 0.16-0.2 0.24-0.2s0.17-0.12 0.25-0.3c0.08-0.17 0.04-0.32-0.03-0.42-0.08-0.1-0.74-1.78-1.01-2.44-0.27-0.62-0.54-0.56-0.74-0.57-0.18-0.01-0.39-0.01-0.6-0.01-0.21 0-0.54 0.08-0.82 0.36-0.28 0.27-1.07 1.05-1.07 2.57 0 1.52 1.1 2.97 1.25 3.17 0.14 0.2 2.15 3.28 5.21 4.54 0.77 0.31 1.03 0.5 1.38 0.61 0.34 0.1 0.73 0.09 1.01 0.05 0.3-0.05 0.74-0.3 0.84-0.56s0.62-0.67 0.7-1.21c0.09-0.54 0.09-0.99 0.06-1.08s-0.1-0.15-0.21-0.2z" />
-        </svg>
-    </a>
-    
+    <!-- Footer -->
+    <footer class="bg-gray-100 text-center py-10 px-4 text-gray-500 text-sm">
+        <div class="max-w-4xl mx-auto space-y-2">
+            <p class="font-bold text-gray-800"><a href="https://www.instagram.com/aneercare.chile" target="_blank">@aneercare.chile</a></p>
+            <p>+569 45167107</p>
+            <p>Santiago, Chile</p>
+            <p class="mt-4 text-xs">Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Social Proof Container -->
+    <div id="social-proof-container"></div>
+
+    <!-- AOS Animation Library JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
     <script>
-        // ... (código JavaScript sin cambios)
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+        });
+
+        // JavaScript para el acordeón de FAQ
+        const faqContainer = document.getElementById('faq-container');
+        if (faqContainer) {
+            faqContainer.addEventListener('click', function(e) {
+                const toggle = e.target.closest('.faq-toggle');
+                if (toggle) {
+                    const content = toggle.nextElementSibling;
+                    const icon = toggle.querySelector('svg');
+                    
+                    const allToggles = faqContainer.querySelectorAll('.faq-toggle');
+                    allToggles.forEach(t => {
+                        if (t !== toggle) {
+                            t.nextElementSibling.classList.add('hidden');
+                            t.querySelector('svg').classList.remove('rotate-180');
+                        }
+                    });
+
+                    content.classList.toggle('hidden');
+                    icon.classList.toggle('rotate-180');
+                }
+            });
+        }
+        
+        // JavaScript para el contador de stock (adaptado de RENOVA+)
+        const stockElement = document.getElementById('stock-counter');
+        let stockCount = 20; // Stock para la talla S
+        const minStock = Math.floor(Math.random() * 5) + 2; // Detiene la cuenta en un número aleatorio entre 2 y 6
+
+        function updateStock() {
+            if (stockCount > minStock) {
+                stockCount--;
+                stockElement.textContent = stockCount;
+            } else {
+                stockElement.textContent = `¡Últimas ${minStock} unidades!`;
+            }
+            
+            // Establece un nuevo intervalo aleatorio para la próxima actualización
+            const randomInterval = Math.random() * 12000 + 8000; // 8-20 segundos
+            setTimeout(updateStock, randomInterval);
+        }
+
+        // Inicia el contador de stock después de un retraso inicial
+        setTimeout(updateStock, 10000); // Primera actualización después de 10 segundos
+
+        // JavaScript para ocultar la flecha de scroll
+        const scrollArrow = document.querySelector('.scroll-down-arrow');
+        if (scrollArrow) {
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) { // Oculta después de 50px de scroll
+                    scrollArrow.style.opacity = '0';
+                } else {
+                    scrollArrow.style.opacity = '1';
+                }
+            });
+        }
+
+        // JavaScript para notificaciones de 'social proof'
+        const socialProofContainer = document.getElementById('social-proof-container');
+        const femaleNames = ["Javiera", "Sofía", "Isidora", "Antonella", "Valentina", "Camila", "Fernanda", "Catalina"];
+        const maleNames = ["Benjamín", "Matías", "Joaquín", "Agustín"];
+        const cities = ["Santiago", "Viña del Mar", "Concepción", "La Serena", "Antofagasta", "Temuco", "Rancagua", "Valparaíso"];
+        const actions = [
+            "acaba de comprar el Pack Dúo Mamá e Hija.",
+            "acaba de consultar por precios al por mayor.",
+            "acaba de comprar el Pack Niñas.",
+            "acaba de comprar una Copa Menstrual Individual."
+        ];
+
+        function showSocialProof() {
+            let randomName;
+            // Genera nombres de mujer el 80% del tiempo
+            if (Math.random() > 0.2) {
+                randomName = femaleNames[Math.floor(Math.random() * femaleNames.length)];
+            } else {
+                randomName = maleNames[Math.floor(Math.random() * maleNames.length)];
+            }
+            const randomCity = cities[Math.floor(Math.random() * cities.length)];
+            const randomAction = actions[Math.floor(Math.random() * actions.length)];
+
+            const popup = document.createElement('div');
+            popup.className = 'social-proof-popup';
+            popup.innerHTML = `
+                <p>
+                    <strong class="text-gray-900">${randomName}</strong> de ${randomCity}
+                    <span class="text-gray-600">${randomAction}</span>
+                </p>
+                <p class="text-xs text-gray-400 mt-1">hace ${Math.floor(Math.random() * 59) + 1} segundos</p>
+            `;
+
+            socialProofContainer.appendChild(popup);
+
+            setTimeout(() => {
+                popup.remove();
+            }, 5000); // El popup desaparece después de 5 segundos
+        }
+
+        // Muestra la primera notificación después de un breve retraso y luego lo repite
+        setTimeout(() => {
+            showSocialProof();
+            setInterval(showSocialProof, Math.random() * 10000 + 8000); // Nueva notificación cada 8-18 segundos
+        }, 5000); // Primera notificación después de 5 segundos
+
+        // Lógica para determinar la talla ideal
+        const tallaForm = document.getElementById('talla-form');
+        const resultContainer = document.getElementById('talla-result');
+        const resultText = document.getElementById('result-text');
+        
+        tallaForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const age = document.querySelector('input[name="age"]:checked').value;
+            const sexualLife = document.querySelector('input[name="sexualLife"]:checked').value;
+            const normalBirth = document.querySelector('input[name="normalBirth"]:checked').value;
+            
+            let resultTalla = '';
+
+            if (age === 'under18' && sexualLife === 'no') {
+                resultTalla = 'XS';
+            } else if ((age === '18to30' || sexualLife === 'yes') && normalBirth === 'no') {
+                resultTalla = 'S';
+            } else if (age === 'over30' || normalBirth === 'yes') {
+                resultTalla = 'L';
+            } else {
+                resultTalla = 'No se pudo determinar. Por favor, contáctanos.';
+            }
+
+            resultText.textContent = `Tu talla ideal es: ${resultTalla}`;
+            resultContainer.classList.remove('hidden');
+        });
+
     </script>
-    
+
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
