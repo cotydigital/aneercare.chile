@@ -21,8 +21,9 @@
         body {
             font-family: 'Inter', sans-serif;
             scroll-behavior: smooth;
-            color: #212121; /* Color de texto principal */
-            background-color: #fefefe; /* Fondo blanco */
+            color: #212121;
+            background-color: #fefefe;
+            overflow-x: hidden;
         }
         /* Estilo del botón principal de llamada a la acción */
         .cta-button {
@@ -30,36 +31,38 @@
         }
         .cta-button:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+            box-shadow: 0 10px 20px rgba(229, 0, 116, 0.3);
         }
-        /* Estilo para los títulos de sección que imita el diseño de RENOVA+ */
+        /* Estilo para los títulos de sección */
         .section-title {
             font-family: 'Inter', sans-serif;
             font-weight: 900;
             text-transform: uppercase;
         }
-        /* Color de acento de AneerCare, similar al de RENOVA+ */
+        /* Color de acento de AneerCare */
         .aneercare-accent-color {
             color: #E50074;
         }
         /* Contenedor de notificaciones de 'social proof' */
         #social-proof-container {
             position: fixed;
-            bottom: 20px;
+            bottom: 80px; /* Subido un poco para no tapar el botón de WhatsApp */
             left: 20px;
             z-index: 10000;
         }
         /* Popup de notificación individual */
         .social-proof-popup {
-            background-color: rgba(255, 255, 255, 0.9); /* Blanco con opacidad */
+            background-color: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(5px);
-            border: 1px solid #E50074;
+            border-left: 4px solid #E50074;
             color: #212121;
-            border-radius: 0.5rem;
+            border-radius: 0.25rem 0.5rem 0.5rem 0.25rem;
             padding: 1rem;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
             max-width: 300px;
+            margin-top: 10px;
             animation: slideInUp 0.5s ease-out forwards, slideOutDown 0.5s ease-in 4.5s forwards;
+            font-size: 0.875rem;
         }
         /* Animaciones para las notificaciones */
         @keyframes slideInUp {
@@ -72,8 +75,8 @@
         }
         /* Flecha de scroll */
         .scroll-down-arrow {
-            position: fixed; 
-            bottom: 1rem;
+            position: absolute; 
+            bottom: 2rem;
             left: 50%;
             transform: translateX(-50%);
             animation: bounce 2.5s infinite;
@@ -95,9 +98,9 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 0.5rem 1rem;
+            padding: 0.75rem 1.25rem;
             background-color: #25d366;
-            border-radius: 9999px; /* Tailwind's full rounded */
+            border-radius: 9999px;
             color: white;
             font-weight: bold;
             box-shadow: 0 4px 12px rgba(0,0,0,0.25);
@@ -110,18 +113,18 @@
         .whatsapp-icon {
             width: 24px;
             height: 24px;
-            margin-right: 8px; /* Espacio entre el ícono y el texto */
+            margin-right: 8px;
         }
-        /* Estilo para la estela de cursor */
+        /* Estilo para la estela de cursor (Opcional, sutil) */
         .cursor-trail {
             position: absolute;
-            width: 10px;
-            height: 10px;
-            background-color: #E50074; /* Color de acento */
+            width: 8px;
+            height: 8px;
+            background-color: rgba(229, 0, 116, 0.5); /* Color de acento con opacidad */
             border-radius: 50%;
             pointer-events: none;
             transform: translate(-50%, -50%);
-            animation: fadeOut 1s forwards;
+            animation: fadeOut 0.8s forwards;
             z-index: 9999;
         }
         @keyframes fadeOut {
@@ -130,43 +133,48 @@
         }
     </style>
 </head>
-<body class="bg-white text-gray-800 overflow-x-hidden">
+<body class="bg-white text-gray-800">
 
     <!-- Hero Section -->
-    <section class="relative text-center py-20 md:py-32 px-4 bg-pink-50">
-        <div class="max-w-4xl mx-auto">
+    <section class="relative text-center py-20 md:py-32 px-4 bg-pink-50 min-h-screen flex flex-col justify-center">
+        <div class="max-w-4xl mx-auto z-10">
             <h1 class="text-4xl md:text-6xl font-black tracking-tight leading-tight text-gray-900" data-aos="fade-down">
-                El final de una era. <span class="aneercare-accent-color">El inicio de tu libertad.</span>
+                El final de una era. <br class="hidden md:block" />
+                <span class="aneercare-accent-color">El inicio de tu libertad.</span>
             </h1>
             <h2 class="mt-6 text-lg md:text-2xl text-gray-600 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="200">
-                Descubre AneerCare: Un dispositivo de silicona quirúrgica con certificación FDA que te brinda hasta 12 horas de comodidad, sin olores ni irritaciones. Con una durabilidad de hasta 10 años, es la alternativa que tu cuerpo y el planeta necesitan.
+                Descubre AneerCare: Un dispositivo de silicona quirúrgica con certificación FDA que te brinda hasta 12 horas de comodidad, sin olores ni irritaciones. 
             </h2>
             <div class="mt-10" data-aos="zoom-in" data-aos-delay="400">
-                <a href="https://wa.link/8uf9ns" class="cta-button inline-block text-white font-bold text-xl uppercase rounded-lg px-12 py-4 shadow-lg" style="background-color: #E50074;">
+                <a href="#packages" class="cta-button inline-block text-white font-bold text-xl uppercase rounded-lg px-12 py-4 shadow-lg" style="background-color: #E50074;">
                     Elige tu Plan de Libertad
                 </a>
             </div>
         </div>
-        <a href="#problem" class="scroll-down-arrow" aria-label="Desplazarse hacia abajo">
-            <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+        <a href="#trust-bar" class="scroll-down-arrow" aria-label="Desplazarse hacia abajo">
+            <svg class="w-10 h-10 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
         </a>
     </section>
 
-    <!-- Trust Bar Section (Adaptado del original) -->
-    <section id="trust-bar" class="bg-white py-6">
-        <div class="max-w-5xl mx-auto px-4" data-aos="fade-up">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-                <div class="flex flex-col items-center justify-center">
-                    <p class="font-bold text-gray-500">Material de Alta Calidad: <span class="text-gray-800">Silicona Quirúrgica</span></p>
+    <!-- Trust Bar Section -->
+    <section id="trust-bar" class="bg-white py-8 border-b border-gray-100">
+        <div class="max-w-6xl mx-auto px-4" data-aos="fade-up">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                <div class="flex flex-col items-center justify-center p-2">
+                    <span class="text-3xl mb-2">🛡️</span>
+                    <p class="text-sm font-bold text-gray-500">Material 100% Seguro <br><span class="text-gray-800">Silicona Quirúrgica</span></p>
                 </div>
-                <div class="flex flex-col items-center justify-center">
-                    <p class="font-bold text-gray-500">Certificación: <span class="text-gray-800">FDA Approved</span></p>
+                <div class="flex flex-col items-center justify-center p-2">
+                    <span class="text-3xl mb-2">✅</span>
+                    <p class="text-sm font-bold text-gray-500">Certificación <br><span class="text-gray-800">FDA Approved</span></p>
                 </div>
-                <div class="flex flex-col items-center justify-center">
-                    <p class="font-bold text-gray-500">Libre de: <span class="text-gray-800">Olores, Irritaciones, Alergias</span></p>
+                <div class="flex flex-col items-center justify-center p-2">
+                    <span class="text-3xl mb-2">🌸</span>
+                    <p class="text-sm font-bold text-gray-500">Libre de <br><span class="text-gray-800">Olores e Irritaciones</span></p>
                 </div>
-                <div class="flex flex-col items-center justify-center">
-                    <p class="font-bold text-gray-500">Compromiso: <span class="text-gray-800">Ecológico y Económico</span></p>
+                <div class="flex flex-col items-center justify-center p-2">
+                    <span class="text-3xl mb-2">🌱</span>
+                    <p class="text-sm font-bold text-gray-500">Compromiso <br><span class="text-gray-800">Ecológico y Económico</span></p>
                 </div>
             </div>
         </div>
@@ -177,330 +185,298 @@
         <div class="max-w-3xl mx-auto">
             <h3 class="text-3xl font-bold text-center mb-12 text-gray-900" data-aos="fade-down">Si eres honesta, esto te suena familiar...</h3>
             <div class="space-y-6 text-lg">
-                <div class="flex items-start bg-white p-4 rounded-lg shadow" data-aos="fade-right">
-                    <svg class="w-6 h-6 aneercare-accent-color mr-4 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                    <p>Notas que los <strong class="text-gray-800">productos desechables generan irritación y olores</strong> incómodos.</p>
+                <div class="flex items-start bg-white p-6 rounded-xl shadow-sm border border-gray-100" data-aos="fade-right">
+                    <svg class="w-8 h-8 text-red-500 mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <p>Notas que los <strong class="text-gray-800">productos desechables generan irritación, rozaduras y olores</strong> incómodos que te hacen sentir insegura.</p>
                 </div>
-                <div class="flex items-start bg-white p-4 rounded-lg shadow" data-aos="fade-left" data-aos-delay="100">
-                    <svg class="w-6 h-6 aneercare-accent-color mr-4 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                    <p>Te preocupa el <strong class="text-gray-800">gasto constante</strong> en toallas y tampones cada mes.</p>
+                <div class="flex items-start bg-white p-6 rounded-xl shadow-sm border border-gray-100" data-aos="fade-left" data-aos-delay="100">
+                    <svg class="w-8 h-8 text-red-500 mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <p>Te preocupa el <strong class="text-gray-800">gasto constante e interminable</strong> en toallas y tampones mes a mes, año tras año.</p>
                 </div>
-                <div class="flex items-start bg-white p-4 rounded-lg shadow" data-aos="fade-right" data-aos-delay="200">
-                    <svg class="w-6 h-6 aneercare-accent-color mr-4 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                    <p>Sientes que tu período te limita, impidiéndote <strong class="text-gray-800">realizar actividades físicas con total libertad.</strong></p>
+                <div class="flex items-start bg-white p-6 rounded-xl shadow-sm border border-gray-100" data-aos="fade-right" data-aos-delay="200">
+                    <svg class="w-8 h-8 text-red-500 mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <p>Sientes que tu período te limita, impidiéndote <strong class="text-gray-800">dormir tranquila, ir a la playa o realizar actividades físicas con total libertad.</strong></p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Solution Section -->
-    <section class="bg-white py-16 sm:py-24 px-4">
+    <section class="bg-white py-16 sm:py-24 px-4 overflow-hidden">
         <div class="max-w-5xl mx-auto">
-            <div class="text-center" data-aos="fade-down">
-                <h3 class="text-4xl section-title text-gray-900">La <span class="aneercare-accent-color">solución inteligente</span> para tu bienestar diario.</h3>
-                <p class="mt-4 text-xl text-gray-600 max-w-3xl mx-auto">La copa menstrual AneerCare te ofrece una alternativa segura, cómoda y amigable con el medio ambiente, permitiéndote vivir tu ciclo sin preocupaciones.</p>
+            <div class="text-center mb-16" data-aos="fade-down">
+                <h3 class="text-4xl section-title text-gray-900">La <span class="aneercare-accent-color">solución inteligente</span> para tu bienestar.</h3>
+                <p class="mt-4 text-xl text-gray-600 max-w-3xl mx-auto">La copa menstrual AneerCare te ofrece una alternativa segura, cómoda y amigable con el medio ambiente.</p>
             </div>
-            <div class="mt-12 grid md:grid-cols-2 gap-12 items-center">
-                <div class="text-center" data-aos="fade-right">
-                    <!-- Image of Menstrual Cup -->
-                    <img src="images/copakit.png" alt="Producto AneerCare Copa Menstrual" class="rounded-lg w-full max-w-sm mx-auto shadow-2xl">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="text-center relative" data-aos="fade-right">
+                    <!-- Decoración de fondo -->
+                    <div class="absolute inset-0 bg-pink-100 rounded-full transform -rotate-6 scale-105 -z-10"></div>
+                    <!-- Imagen Placeholder (Reemplazar por copakit.png) -->
+                    <img src="https://images.unsplash.com/photo-1616400620188-06cb65f122fc?auto=format&fit=crop&w=600&q=80" alt="Producto AneerCare Copa Menstrual" class="rounded-2xl w-full max-w-md mx-auto shadow-2xl object-cover h-80">
                 </div>
                 <div data-aos="fade-left">
                     <div class="space-y-6">
-                        <div class="bg-gray-50 shadow p-4 rounded-lg">
-                            <h5 class="font-bold text-lg aneercare-accent-color">✅ Reutilizable por 10 Años</h5>
-                            <p class="text-gray-600">A diferencia de los productos desechables, tu copa dura una década, reduciendo costos y residuos.</p>
+                        <div class="bg-pink-50 border-l-4 border-pink-500 p-5 rounded-r-lg shadow-sm">
+                            <h5 class="font-bold text-lg text-gray-900">♻️ Reutilizable por 10 Años</h5>
+                            <p class="text-gray-600 mt-1">A diferencia de los productos desechables, tu copa dura una década, reduciendo costos y residuos drásticamente.</p>
                         </div>
-                        <div class="bg-gray-50 shadow p-4 rounded-lg">
-                            <h5 class="font-bold text-lg aneercare-accent-color">✅ Comodidad y Libertad</h5>
-                            <p class="text-gray-600">Puedes usarla por hasta 12 horas sin tener que preocuparte por cambios constantes, olores o fugas, ideal para cualquier actividad.</p>
+                        <div class="bg-pink-50 border-l-4 border-pink-500 p-5 rounded-r-lg shadow-sm">
+                            <h5 class="font-bold text-lg text-gray-900">🏃‍♀️ Comodidad y Libertad Absoluta</h5>
+                            <p class="text-gray-600 mt-1">Puedes usarla por hasta 12 horas sin tener que preocuparte por cambios constantes, olores o fugas en ninguna actividad.</p>
                         </div>
-                        <div class="bg-gray-50 shadow p-4 rounded-lg">
-                            <h5 class="font-bold text-lg aneercare-accent-color">✅ Saludable y Segura</h5>
-                            <p class="text-gray-600">Fabricada con silicona quirúrgica certificada, no altera tu pH natural y evita irritaciones y alergias.</p>
+                        <div class="bg-pink-50 border-l-4 border-pink-500 p-5 rounded-r-lg shadow-sm">
+                            <h5 class="font-bold text-lg text-gray-900">🩺 Saludable y Segura</h5>
+                            <p class="text-gray-600 mt-1">Fabricada con silicona quirúrgica certificada, no altera tu pH natural y evita la resequedad y el Síndrome de Shock Tóxico.</p>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Comparison Section -->
-    <section class="bg-gray-50 py-16 sm:py-24 px-4">
-        <div class="max-w-4xl mx-auto text-center" data-aos="fade-down">
-            <h3 class="text-4xl section-title text-gray-900">¿Por qué AneerCare es la <span class="aneercare-accent-color">opción más inteligente</span>?</h3>
-            <p class="mt-4 text-xl text-gray-600">Una decisión que beneficia a tu bolsillo y al planeta.</p>
-            <div class="mt-8 grid md:grid-cols-3 gap-8">
-                <div class="bg-white shadow-lg p-6 rounded-lg" data-aos="fade-right">
-                    <h4 class="text-xl font-bold text-red-600">Toallas y Tampones</h4>
-                    <p class="text-2xl font-bold mt-2 text-gray-900">Gasto recurrente</p>
-                    <p class="text-gray-500">Más de 11.000 productos y 15.6 kg de basura anual.</p>
-                </div>
-                <div class="p-6 rounded-lg text-white shadow-lg flex flex-col justify-center" style="background-color: #E50074;" data-aos="fade-up" data-aos-delay="100">
-                    <h4 class="text-xl font-bold">AneerCare Copa Menstrual</h4>
-                    <p class="text-2xl font-bold mt-2">Inversión Única</p>
-                    <p class="text-pink-100">Solo 5 copas en tu vida. Económico y ecológico.</p>
-                </div>
-                <div class="bg-white shadow-lg p-6 rounded-lg" data-aos="fade-left" data-aos-delay="200">
-                    <h4 class="text-xl font-bold text-red-600">Otros productos</h4>
-                    <p class="text-2xl font-bold mt-2 text-gray-900">Costo Medio</p>
-                    <p class="text-gray-500">Requiere compras frecuentes y no son 100% reutilizables.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Testimonials Section -->
-    <section class="bg-white py-16 sm:py-24 px-4">
+    <section class="bg-gray-50 py-16 sm:py-24 px-4">
         <div class="max-w-5xl mx-auto">
-            <div class="text-center" data-aos="fade-down">
+            <div class="text-center mb-16" data-aos="fade-down">
                 <h3 class="text-4xl section-title text-gray-900">Resultados Reales, <span class="aneercare-accent-color">Historias Reales</span></h3>
-                <p class="mt-4 text-xl text-gray-600">No confíes solo en nuestra palabra. Confía en sus experiencias.</p>
+                <p class="mt-4 text-xl text-gray-600">No confíes solo en nuestra palabra. Confía en las experiencias de nuestra comunidad.</p>
             </div>
             
-            <div class="mt-12 space-y-12">
-                <!-- Testimonio 1: Comodidad al dormir -->
-                <div class="grid md:grid-cols-3 gap-8 md:gap-12 items-center bg-gray-50 p-6 rounded-lg shadow" data-aos="fade-up">
-                    <div class="md:col-span-1 text-center">
-                        <img src="images/testimonio1.jpg" alt="Testimonio de Alex" class="rounded-full mx-auto w-32 h-32 object-cover">
-                        <p class="mt-4 font-bold text-lg text-gray-900">Alex.</p>
-                        <p class="text-gray-500 text-sm">22 años, Santiago</p>
-                        <div class="flex justify-center mt-2">
-                            <span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span class="text-yellow-400">★</span>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Testimonio 1 -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 flex flex-col" data-aos="fade-up">
+                    <div class="flex items-center mb-4">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=150&q=80" alt="Alex" class="rounded-full w-16 h-16 object-cover border-2 border-pink-200">
+                        <div class="ml-4">
+                            <p class="font-bold text-gray-900">Alex.</p>
+                            <p class="text-gray-500 text-xs">22 años, Santiago</p>
+                            <div class="text-yellow-400 text-sm mt-1">★★★★★</div>
                         </div>
                     </div>
-                    <div class="md:col-span-2 text-lg text-gray-700">
-                        <p class="italic">"Desde que uso AneerCare, mis noches han cambiado por completo. Antes siempre me despertaba preocupada por manchar la cama, pero ahora duermo con total tranquilidad. Es tan cómoda que ni siquiera la siento, y me da la libertad de moverme sin restricciones."</p>
-                    </div>
+                    <p class="italic text-gray-700 text-sm flex-grow">"Desde que uso AneerCare, mis noches han cambiado por completo. Antes siempre me despertaba preocupada por manchar la cama, pero ahora duermo con total tranquilidad. Me da la libertad de moverme sin restricciones."</p>
                 </div>
 
-                <!-- Testimonio 2: Deporte sin irritaciones -->
-                <div class="grid md:grid-cols-3 gap-8 md:gap-12 items-center bg-gray-50 p-6 rounded-lg shadow" data-aos="fade-up" data-aos-delay="100">
-                    <div class="md:col-span-1 text-center md:order-2">
-                        <img src="images/testimonio2.jpg" alt="Testimonio de Constanza" class="rounded-full mx-auto w-32 h-32 object-cover">
-                        <p class="mt-4 font-bold text-lg text-gray-900">Constanza C.</p>
-                        <p class="text-gray-500 text-sm">28 años, Pudahuel</p>
-                        <div class="flex justify-center mt-2">
-                            <span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span class="text-yellow-400">★</span>
+                <!-- Testimonio 2 -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 flex flex-col" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex items-center mb-4">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80" alt="Constanza" class="rounded-full w-16 h-16 object-cover border-2 border-pink-200">
+                        <div class="ml-4">
+                            <p class="font-bold text-gray-900">Constanza C.</p>
+                            <p class="text-gray-500 text-xs">28 años, Pudahuel</p>
+                            <div class="text-yellow-400 text-sm mt-1">★★★★★</div>
                         </div>
                     </div>
-                    <div class="md:col-span-2 text-lg text-gray-700 md:order-1">
-                        <p class="italic">"Juego fùtbol y antes de cada competencia me preocupaba mi período. Las toallas me rozaban y los tampones eran incómodos. Con la copa AneerCare, puedo entrenar y competir sin irritaciones ni molestias. Es un cambio de juego para cualquier deportista."</p>
-                    </div>
+                    <p class="italic text-gray-700 text-sm flex-grow">"Juego fútbol y antes de cada competencia me preocupaba. Las toallas me rozaban y los tampones eran incómodos. Con la copa, puedo entrenar y competir sin irritaciones. Es un cambio de juego total."</p>
                 </div>
 
-                <!-- Testimonio 3: Bañarse en el mar -->
-                <div class="grid md:grid-cols-3 gap-8 md:gap-12 items-center bg-gray-50 p-6 rounded-lg shadow" data-aos="fade-up" data-aos-delay="200">
-                    <div class="md:col-span-1 text-center">
-                        <img src="images/testimonio3.jpg" alt="Testimonio de Nicole" class="rounded-full mx-auto w-32 h-32 object-cover">
-                        <p class="mt-4 font-bold text-lg text-gray-900">Nicole M.</p>
-                        <p class="text-gray-500 text-sm">36 años, Viña del Mar</p>
-                        <div class="flex justify-center mt-2">
-                            <span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span class="text-yellow-400">★</span>
+                <!-- Testimonio 3 -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 flex flex-col" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex items-center mb-4">
+                        <img src="https://images.unsplash.com/photo-1554151228-14d9def656e4?auto=format&fit=crop&w=150&q=80" alt="Nicole" class="rounded-full w-16 h-16 object-cover border-2 border-pink-200">
+                        <div class="ml-4">
+                            <p class="font-bold text-gray-900">Nicole M.</p>
+                            <p class="text-gray-500 text-xs">36 años, Viña del Mar</p>
+                            <div class="text-yellow-400 text-sm mt-1">★★★★★</div>
                         </div>
                     </div>
-                    <div class="md:col-span-2 text-lg text-gray-700">
-                        <p class="italic">"Vivimos en la costa y pasar un día sin ir a la playa es imposible. Antes tenía que planear todo alrededor de mi ciclo, pero ahora, ¡ni me lo pienso! La copa me permite bañarme en el mar sin preocuparme por fugas o por el cordón del tampón. Es la verdadera libertad."</p>
-                    </div>
+                    <p class="italic text-gray-700 text-sm flex-grow">"Vivimos en la costa y pasar un día sin ir a la playa es imposible. Ahora la copa me permite bañarme en el mar sin preocuparme por fugas o por el cordón del tampón. Es la verdadera libertad."</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Talla Ideal Section -->
-    <section class="bg-gray-50 py-16 sm:py-24 px-4" id="talla-ideal">
+    <section class="bg-pink-600 py-16 sm:py-24 px-4 text-white" id="talla-ideal">
         <div class="max-w-3xl mx-auto">
-            <div class="text-center" data-aos="fade-down">
-                <h3 class="text-4xl section-title text-gray-900">¿No sabes tu talla? <span class="aneercare-accent-color">Te ayudamos a elegir.</span></h3>
-                <p class="mt-4 text-xl text-gray-600">Responder estas sencillas preguntas para encontrar la talla perfecta para ti.</p>
+            <div class="text-center mb-10" data-aos="fade-down">
+                <h3 class="text-4xl section-title">¿No sabes tu talla? <span class="text-pink-200">Te ayudamos.</span></h3>
+                <p class="mt-4 text-xl text-pink-100">Responde estas 3 rápidas preguntas para encontrar tu ajuste perfecto.</p>
             </div>
 
-            <div class="mt-12 bg-white p-8 rounded-lg shadow-xl" data-aos="fade-up">
+            <div class="bg-white text-gray-800 p-8 rounded-2xl shadow-2xl" data-aos="zoom-in">
                 <form id="talla-form" class="space-y-6">
-                    <div>
-                        <label class="block text-gray-700 font-bold mb-2">1. ¿Qué edad tienes?</label>
+                    <div class="p-4 bg-gray-50 rounded-lg border border-gray-200">
+                        <label class="block font-bold mb-3 text-lg">1. ¿Qué edad tienes?</label>
                         <div class="flex flex-col sm:flex-row gap-4">
-                            <label class="inline-flex items-center">
-                                <input type="radio" name="age" value="under18" class="form-radio text-pink-600" required>
-                                <span class="ml-2 text-gray-800">Menos de 18 años</span>
+                            <label class="inline-flex items-center cursor-pointer">
+                                <input type="radio" name="age" value="under18" class="w-5 h-5 text-pink-600 focus:ring-pink-500" required>
+                                <span class="ml-2">Menos de 18 años</span>
                             </label>
-                            <label class="inline-flex items-center">
-                                <input type="radio" name="age" value="18to30" class="form-radio text-pink-600">
-                                <span class="ml-2 text-gray-800">Entre 18 y 30 años</span>
+                            <label class="inline-flex items-center cursor-pointer">
+                                <input type="radio" name="age" value="18to30" class="w-5 h-5 text-pink-600 focus:ring-pink-500">
+                                <span class="ml-2">Entre 18 y 30 años</span>
                             </label>
-                            <label class="inline-flex items-center">
-                                <input type="radio" name="age" value="over30" class="form-radio text-pink-600">
-                                <span class="ml-2 text-gray-800">Más de 30 años</span>
+                            <label class="inline-flex items-center cursor-pointer">
+                                <input type="radio" name="age" value="over30" class="w-5 h-5 text-pink-600 focus:ring-pink-500">
+                                <span class="ml-2">Más de 30 años</span>
                             </label>
                         </div>
                     </div>
                     
-                    <div>
-                        <label class="block text-gray-700 font-bold mb-2">2. ¿Has iniciado tu vida sexual?</label>
-                        <div class="flex flex-col sm:flex-row gap-4">
-                            <label class="inline-flex items-center">
-                                <input type="radio" name="sexualLife" value="no" class="form-radio text-pink-600" required>
-                                <span class="ml-2 text-gray-800">No</span>
+                    <div class="p-4 bg-gray-50 rounded-lg border border-gray-200">
+                        <label class="block font-bold mb-3 text-lg">2. ¿Has iniciado tu vida sexual?</label>
+                        <div class="flex flex-col sm:flex-row gap-6">
+                            <label class="inline-flex items-center cursor-pointer">
+                                <input type="radio" name="sexualLife" value="no" class="w-5 h-5 text-pink-600 focus:ring-pink-500" required>
+                                <span class="ml-2">No</span>
                             </label>
-                            <label class="inline-flex items-center">
-                                <input type="radio" name="sexualLife" value="yes" class="form-radio text-pink-600">
-                                <span class="ml-2 text-gray-800">Sí</span>
+                            <label class="inline-flex items-center cursor-pointer">
+                                <input type="radio" name="sexualLife" value="yes" class="w-5 h-5 text-pink-600 focus:ring-pink-500">
+                                <span class="ml-2">Sí</span>
                             </label>
                         </div>
                     </div>
 
-                    <div>
-                        <label class="block text-gray-700 font-bold mb-2">3. ¿Has tenido hijos por parto normal?</label>
-                        <div class="flex flex-col sm:flex-row gap-4">
-                            <label class="inline-flex items-center">
-                                <input type="radio" name="normalBirth" value="no" class="form-radio text-pink-600" required>
-                                <span class="ml-2 text-gray-800">No</span>
+                    <div class="p-4 bg-gray-50 rounded-lg border border-gray-200">
+                        <label class="block font-bold mb-3 text-lg">3. ¿Has tenido hijos por parto natural?</label>
+                        <div class="flex flex-col sm:flex-row gap-6">
+                            <label class="inline-flex items-center cursor-pointer">
+                                <input type="radio" name="normalBirth" value="no" class="w-5 h-5 text-pink-600 focus:ring-pink-500" required>
+                                <span class="ml-2">No / Cesárea</span>
                             </label>
-                            <label class="inline-flex items-center">
-                                <input type="radio" name="normalBirth" value="yes" class="form-radio text-pink-600">
-                                <span class="ml-2 text-gray-800">Sí</span>
+                            <label class="inline-flex items-center cursor-pointer">
+                                <input type="radio" name="normalBirth" value="yes" class="w-5 h-5 text-pink-600 focus:ring-pink-500">
+                                <span class="ml-2">Sí</span>
                             </label>
                         </div>
                     </div>
                     
-                    <button type="submit" class="cta-button w-full text-white font-bold uppercase rounded-lg px-8 py-3" style="background-color: #E50074;">Ver mi Talla Ideal</button>
+                    <button type="submit" class="cta-button w-full text-white font-black text-lg uppercase rounded-xl px-8 py-4 mt-4" style="background-color: #E50074;">Descubrir mi Talla Ideal</button>
                 </form>
                 
                 <!-- Contenedor para mostrar el resultado -->
-                <div id="talla-result" class="hidden mt-6 p-4 rounded-lg border-2 border-dashed border-pink-400 bg-pink-50 text-center">
-                    <p class="font-bold text-lg text-gray-800 mb-2">¡Genial!</p>
-                    <p id="result-text" class="text-gray-700"></p>
+                <div id="talla-result" class="hidden mt-6 p-6 rounded-xl border-2 border-dashed border-pink-400 bg-pink-50 text-center transform transition-all">
+                    <p class="font-black text-2xl text-gray-900 mb-2">¡Lo tenemos!</p>
+                    <p id="result-text" class="text-xl text-pink-700 font-semibold mb-4"></p>
+                    <a href="#packages" class="text-sm font-bold text-gray-600 underline hover:text-pink-600">Ir a elegir mi pack</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Final CTA Section / Packages -->
-    <section id="packages" class="bg-white py-16 sm:py-24 px-4">
-        <div class="max-w-4xl mx-auto text-center">
+    <section id="packages" class="bg-gray-50 py-16 sm:py-24 px-4">
+        <div class="max-w-5xl mx-auto text-center">
             <h3 class="text-4xl section-title text-gray-900" data-aos="fade-down">Elige tu Plan de Bienestar</h3>
-            <p class="mt-6 text-xl text-gray-600" data-aos="fade-up">Comenzar a cuidarte desde adentro es la mejor decisión.</p>
+            <p class="mt-4 text-xl text-gray-600" data-aos="fade-up">Invierte una vez, disfruta por años.</p>
             
             <!-- Urgency Container (Stock Counter) -->
-            <div class="mt-10 mb-10 bg-red-600 text-white border-2 border-dashed border-red-400 p-6 rounded-lg max-w-3xl mx-auto grid md:grid-cols-2 gap-6 items-center" data-aos="zoom-in">
-                <div>
-                    <h4 class="text-2xl font-black text-yellow-300 uppercase">¡Date Prisa!</h4>
-                    <p class="mt-2">Debido a la alta demanda, solo quedan:</p>
+            <div class="mt-10 mb-12 bg-gray-900 text-white p-6 rounded-2xl max-w-3xl mx-auto flex flex-col md:flex-row justify-between items-center shadow-xl border-b-4 border-red-500" data-aos="zoom-in">
+                <div class="text-left mb-4 md:mb-0">
+                    <h4 class="text-2xl font-black text-red-400 uppercase tracking-wide flex items-center">
+                        <svg class="w-6 h-6 mr-2 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        ¡Atención!
+                    </h4>
+                    <p class="mt-1 text-gray-300">Debido a la alta demanda por TikTok, solo quedan:</p>
                 </div>
-                <!-- Stock Counter -->
-                <div class="bg-red-700 p-4 rounded-lg">
-                    <p class="text-5xl font-black text-yellow-300 mt-2"><span id="stock-counter">50</span></p>
-                    <p>unidades con bono disponible.</p>
+                <div class="bg-red-600 px-6 py-3 rounded-xl shadow-inner text-center">
+                    <p class="text-4xl font-black text-white"><span id="stock-counter">18</span></p>
+                    <p class="text-xs text-red-100 uppercase font-bold tracking-wider">Unidades Talla S</p>
                 </div>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-8 text-left text-lg">
+            <div class="grid md:grid-cols-2 gap-8 text-left max-w-4xl mx-auto">
                 <!-- Pack 1: Copa Menstrual Individual -->
-                <div class="bg-gray-50 shadow-lg p-6 rounded-lg border border-gray-200 flex flex-col" data-aos="fade-up">
+                <div class="bg-white shadow-lg p-8 rounded-2xl border border-gray-100 flex flex-col relative hover:shadow-xl transition-shadow" data-aos="fade-up">
                     <div class="flex-grow">
-                        <h4 class="font-bold text-xl text-gray-900">Copa Menstrual Individual</h4>
-                        <p class="text-4xl font-black mt-4 aneercare-accent-color">$8.990 CLP</p>
-                        <ul class="mt-4 space-y-2 text-gray-600">
-                            <li>✓ Incluye caja, bolsa y manual de uso.</li>
-                            <li>✓ Elige tu talla y color.</li>
-                            <li>✓ Talla S: stock muy limitado (~20 unidades).</li>
+                        <h4 class="font-bold text-2xl text-gray-900 leading-tight">Copa Menstrual<br>Individual</h4>
+                        <p class="text-4xl font-black mt-6 aneercare-accent-color">$8.990 <span class="text-sm text-gray-400 font-normal">CLP</span></p>
+                        <ul class="mt-6 space-y-3 text-gray-600 text-sm">
+                            <li class="flex items-start"><svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Incluye caja, bolsa y manual.</li>
+                            <li class="flex items-start"><svg class="w-5 h-5 text-red-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> <strong class="text-gray-900">Solo disponible en talla XS.</strong></li>
                         </ul>
                     </div>
-                    <a href="https://wa.link/8uf9ns" target="_blank" class="mt-6 cta-button block w-full text-center bg-gray-700 text-white font-bold uppercase rounded-lg py-3">Comprar Ahora</a>
+                    <a href="https://wa.link/8uf9ns" target="_blank" class="mt-8 cta-button block w-full text-center border-2 border-pink-600 text-pink-600 hover:bg-pink-50 font-bold uppercase rounded-xl py-3">Comprar Individual</a>
                 </div>
+
                 <!-- Pack 2: Pack Niñas (XS) - Recomendado -->
-                <div class="bg-white shadow-2xl p-6 rounded-lg relative flex flex-col" style="border: 2px solid #E50074;" data-aos="fade-up" data-aos-delay="150">
-                    <span class="absolute top-0 -translate-y-1/2 text-white font-bold uppercase text-sm px-3 py-1 rounded-full" style="background-color: #E50074;">Recomendado</span>
+                <div class="bg-white shadow-2xl p-8 rounded-2xl relative flex flex-col transform md:-translate-y-4" style="border: 3px solid #E50074;" data-aos="fade-up" data-aos-delay="150">
+                    <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white font-black uppercase tracking-widest text-xs px-4 py-1.5 rounded-full shadow-md" style="background-color: #E50074;">
+                        Más Vendido
+                    </div>
                     <div class="flex-grow">
-                        <h4 class="font-bold text-xl text-gray-900">Pack Niñas (2 Copas XS)</h4>
-                        <p class="text-4xl font-black mt-4 aneercare-accent-color">$14.990 CLP</p>
-                         <ul class="mt-4 space-y-2 text-gray-600">
-                            <li>✓ 2 Copas talla XS.</li>
-                            <li>✓ Ideal para primeras menstruaciones.</li>
-                            <li>✓ Promoción especial de lanzamiento.</li>
+                        <h4 class="font-bold text-2xl text-gray-900 leading-tight">Pack Niñas<br><span class="text-lg text-pink-600">(2 Copas XS)</span></h4>
+                        <div class="flex items-center mt-6">
+                            <p class="text-4xl font-black aneercare-accent-color">$14.990</p>
+                            <p class="ml-2 text-sm text-gray-400 line-through">$17.980</p>
+                        </div>
+                        <ul class="mt-6 space-y-3 text-gray-600 text-sm">
+                            <li class="flex items-start"><svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> 2 Copas talla XS (First Time).</li>
+                            <li class="flex items-start"><svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Ideal para primeras menstruaciones.</li>
+                            <li class="flex items-start"><svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Promoción de lanzamiento.</li>
                         </ul>
                     </div>
-                    <a href="https://wa.link/8uf9ns" target="_blank" class="mt-6 cta-button block w-full text-center text-white font-bold uppercase rounded-lg py-3" style="background-color: #E50074;">Comprar y Ahorrar</a>
-                </div>
-                <!-- Pack 3: Pack Mamá e Hija (XS+L) -->
-                <div class="bg-gray-50 shadow-lg p-6 rounded-lg border border-gray-200 flex flex-col" data-aos="fade-up" data-aos-delay="300">
-                    <div class="flex-grow">
-                        <h4 class="font-bold text-xl text-gray-900">Pack Dúo Mamá e Hija</h4>
-                        <p class="text-4xl font-black mt-4 aneercare-accent-color">$15.990 CLP</p>
-                         <ul class="mt-4 space-y-2 text-gray-600">
-                            <li>✓ 1 Copa Talla XS y 1 Copa Talla L.</li>
-                            <li>✓ Comparte la libertad con quien más quieres.</li>
-                            <li>✓ La solución perfecta para dos generaciones.</li>
-                        </ul>
-                    </div>
-                    <a href="https://wa.link/8uf9ns" target="_blank" class="mt-6 cta-button block w-full text-center bg-gray-700 text-white font-bold uppercase rounded-lg py-3">Comprar Pack</a>
+                    <a href="https://wa.link/8uf9ns" target="_blank" class="mt-8 cta-button block w-full text-center text-white font-black uppercase rounded-xl py-4 shadow-lg" style="background-color: #E50074;">Comprar y Ahorrar</a>
                 </div>
             </div>
             
-            <!-- Adición del pack para amigas treintonas -->
-            <div class="mt-12 text-center" data-aos="fade-up">
-                <h4 class="text-2xl font-bold text-gray-900">¿Amigas Treintonas? ¡Tenemos un pack para ustedes!</h4>
-                <p class="mt-4 text-lg text-gray-600">Consigue 3 copas talla L a un precio especial. ¡Perfecto para compartir y ahorrar!</p>
+            <!-- Adición del pack para amigas primerizas -->
+            <div class="mt-16 bg-gradient-to-r from-pink-50 to-purple-50 p-8 rounded-2xl border border-pink-100 text-center" data-aos="fade-up">
+                <h4 class="text-2xl font-black text-gray-900">¿Amigas Primerizas? 👯‍♀️ ¡Tenemos su pack!</h4>
+                <p class="mt-3 text-lg text-gray-700 max-w-2xl mx-auto">Consigue <strong class="text-pink-600">desde 3 copas talla S</strong> a un precio especial exclusivo. ¡Perfecto para compartir el secreto y ahorrar juntas!</p>
                 <div class="mt-6">
-                    <a href="https://wa.link/8uf9ns" target="_blank" class="cta-button inline-block text-white font-bold uppercase rounded-lg px-8 py-3" style="background-color: #E50074;">Consultar Pack Amigas Treintonas</a>
+                    <a href="https://wa.link/8uf9ns" target="_blank" class="cta-button inline-block text-white font-bold uppercase tracking-wide rounded-xl px-8 py-3 shadow-md" style="background-color: #9333ea;">Consultar Pack Amigas Primerizas</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- QR Code Section -->
-    <section class="bg-gray-50 py-16 sm:py-24 px-4">
-        <div class="max-w-xl mx-auto text-center" data-aos="zoom-in">
-            <h3 class="text-3xl md:text-4xl section-title">¡Compra en un <span class="aneercare-accent-color">Click</span>!</h3>
-            <p class="mt-4 text-lg text-gray-600">Escanea este código con tu teléfono para comprar de forma rápida y segura a través de WhatsApp.</p>
-            <div class="mt-8 flex justify-center">
-                <!-- Use the uploaded QR code image -->
-                <img src="walinkcodigo.png" alt="Código QR para comprar por WhatsApp" class="w-64 h-64 border-4 border-white rounded-lg shadow-lg">
+    <!-- QR & Mayorista Section (Combinados para mejor flujo) -->
+    <section class="bg-white py-16 px-4 border-t border-gray-100">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+            
+            <!-- QR Code -->
+            <div class="text-center bg-gray-50 p-10 rounded-3xl" data-aos="fade-right">
+                <h3 class="text-3xl font-black text-gray-900">Compra Rápida</h3>
+                <p class="mt-2 text-gray-600">Apunta tu cámara aquí e iremos directo a WhatsApp.</p>
+                <div class="mt-6 inline-block p-4 bg-white rounded-2xl shadow-sm border border-gray-200">
+                    <!-- Placeholder QR (Apunta a tu wa.link) -->
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://wa.link/8uf9ns&color=E50074" alt="Código QR WhatsApp" class="w-48 h-48">
+                </div>
             </div>
-        </div>
-    </section>
-    
-    <!-- Mayorista Section -->
-    <section class="bg-pink-100 py-16 sm:py-24 px-4">
-        <div class="max-w-4xl mx-auto text-center" data-aos="zoom-in">
-            <h3 class="text-3xl md:text-4xl section-title">¿Buscas <span class="aneercare-accent-color">ventas al por mayor</span>?</h3>
-            <p class="mt-4 text-lg text-gray-600">Si deseas comprar nuestras copas menstruales en grandes cantidades para obtener descuentos especiales, contáctanos directamente para una cotización personalizada.</p>
-            <div class="mt-8">
-                <a href="https://wa.link/8uf9ns" target="_blank" class="cta-button inline-block text-white font-bold uppercase rounded-lg px-8 py-3" style="background-color: #E50074;">Consultar Descuentos por Mayor</a>
+
+            <!-- Mayorista -->
+            <div class="text-center md:text-left" data-aos="fade-left">
+                <span class="text-pink-600 font-bold tracking-wider uppercase text-sm mb-2 block">Oportunidad de Negocio</span>
+                <h3 class="text-3xl md:text-4xl font-black text-gray-900 leading-tight">¿Buscas ventas al<br><span class="aneercare-accent-color">por mayor?</span></h3>
+                <p class="mt-4 text-lg text-gray-600">Ideal para emprendedoras, farmacias o tiendas ecológicas. Obten precios preferenciales y aumenta tus márgenes de ganancia.</p>
+                <a href="https://wa.link/8uf9ns" target="_blank" class="mt-8 cta-button inline-block text-white font-bold uppercase rounded-xl px-8 py-4" style="background-color: #111827;">Solicitar Catálogo Mayorista</a>
             </div>
+
         </div>
     </section>
 
     <!-- FAQ Section -->
-    <section id="faq" class="bg-white py-16 sm:py-24 px-4">
+    <section id="faq" class="bg-gray-50 py-16 sm:py-24 px-4">
         <div class="max-w-3xl mx-auto" data-aos="fade-up">
-            <h3 class="text-3xl font-bold text-center mb-12 text-gray-900">Preguntas Frecuentes</h3>
+            <h3 class="text-3xl font-black text-center mb-12 text-gray-900">Preguntas Frecuentes</h3>
             <div class="space-y-4" id="faq-container">
-                <div class="bg-gray-50 shadow rounded-lg">
-                    <button class="faq-toggle flex justify-between items-center w-full p-5 text-left font-semibold text-gray-900">
+                <div class="bg-white shadow-sm rounded-xl border border-gray-100 overflow-hidden">
+                    <button class="faq-toggle flex justify-between items-center w-full p-6 text-left font-bold text-gray-900 hover:bg-gray-50 transition-colors">
                         <span>¿Cómo se usa la copa menstrual?</span>
-                        <svg class="w-6 h-6 transform transition-transform text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        <svg class="w-6 h-6 transform transition-transform text-pink-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </button>
-                    <div class="faq-content hidden p-5 pt-0 text-gray-600">
-                        <p>El uso es intrauterino. Debes doblarla con la forma que te resulte más cómoda e introducirla en la vagina en dirección al cuello uterino. En el manual de uso que se incluye con tu compra encontrarás diferentes formas de doblado.</p>
+                    <div class="faq-content hidden px-6 pb-6 pt-0 text-gray-600">
+                        <p>El uso es intrauterino. Debes doblarla con la forma que te resulte más cómoda e introducirla en la vagina. Al soltarla, se abrirá creando un suave vacío. En el manual de uso que incluimos encontrarás ilustraciones con las diferentes formas de doblado (forma de C, V, etc.).</p>
                     </div>
                 </div>
-                <div class="bg-gray-50 shadow rounded-lg">
-                    <button class="faq-toggle flex justify-between items-center w-full p-5 text-left font-semibold text-gray-900">
+                <div class="bg-white shadow-sm rounded-xl border border-gray-100 overflow-hidden">
+                    <button class="faq-toggle flex justify-between items-center w-full p-6 text-left font-bold text-gray-900 hover:bg-gray-50 transition-colors">
                         <span>¿Cómo la esterilizo?</span>
-                        <svg class="w-6 h-6 transform transition-transform text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        <svg class="w-6 h-6 transform transition-transform text-pink-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </button>
-                    <div class="faq-content hidden p-5 pt-0 text-gray-600">
-                        <p>Antes y después de tu período, debes hervirla con agua por un máximo de 5 minutos. Durante tu período, puedes limpiarla con solo agua potable.</p>
+                    <div class="faq-content hidden px-6 pb-6 pt-0 text-gray-600">
+                        <p>Antes del primer uso del mes y al finalizar tu período, debes hervirla en agua por un máximo de 3 a 5 minutos. Durante los días de tu menstruación, basta con vaciarla, enjuagarla con agua potable y volver a insertarla.</p>
                     </div>
                 </div>
-                <div class="bg-gray-50 shadow rounded-lg">
-                    <button class="faq-toggle flex justify-between items-center w-full p-5 text-left font-semibold text-gray-900">
-                        <span>¿Cuál es la vida útil de la copa?</span>
-                        <svg class="w-6 h-6 transform transition-transform text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                <div class="bg-white shadow-sm rounded-xl border border-gray-100 overflow-hidden">
+                    <button class="faq-toggle flex justify-between items-center w-full p-6 text-left font-bold text-gray-900 hover:bg-gray-50 transition-colors">
+                        <span>¿Duele al ponerla o sacarla?</span>
+                        <svg class="w-6 h-6 transform transition-transform text-pink-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </button>
-                    <div class="faq-content hidden p-5 pt-0 text-gray-600">
-                        <p>La durabilidad de la copa menstrual es de 10 años, siempre y cuando se realicen los cuidados necesarios y se sigan las instrucciones de limpieza y almacenamiento.</p>
+                    <div class="faq-content hidden px-6 pb-6 pt-0 text-gray-600">
+                        <p>No, si se pone y se quita correctamente no debería doler en absoluto. Para retirarla, es clave pellizcar suavemente la base de la copa para romper el vacío antes de tirar del apéndice. Con la práctica (generalmente 1 o 2 ciclos), se vuelve un proceso de segundos.</p>
                     </div>
                 </div>
             </div>
@@ -508,15 +484,17 @@
     </section>
     
     <!-- Footer -->
-    <footer class="bg-gray-100 text-center py-10 px-4 text-gray-500 text-sm">
-        <div class="max-w-4xl mx-auto space-y-2">
-            <a href="https://www.instagram.com/aneercare.chile" target="_blank" class="flex items-center justify-center space-x-2">
-                <img src="images/logoinstagram.png" alt="Logo de Instagram" class="h-6 w-6">
+    <footer class="bg-white border-t border-gray-200 text-center py-10 px-4 text-gray-500 text-sm">
+        <div class="max-w-4xl mx-auto space-y-4">
+            <a href="https://www.instagram.com/aneercare.chile" target="_blank" class="inline-flex items-center justify-center space-x-2 bg-gray-50 px-6 py-3 rounded-full hover:bg-gray-100 transition">
+                <!-- SVG Icono Instagram -->
+                <svg class="w-5 h-5 text-pink-600" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
                 <span class="font-bold text-gray-800">@aneercare.chile</span>
             </a>
-            <p>+569 45167107</p>
-            <p>Santiago, Chile</p>
-            <p class="mt-4 text-xs">Todos los derechos reservados.</p>
+            <div class="text-gray-400">
+                <p>Santiago, Chile | Envíos a todo el país</p>
+                <p class="mt-2 text-xs">&copy; 2024 AneerCare Chile. Todos los derechos reservados.</p>
+            </div>
         </div>
     </footer>
 
@@ -531,9 +509,27 @@
         AOS.init({
             duration: 800,
             once: true,
+            offset: 100
         });
 
-        // JavaScript para el acordeón de FAQ
+        // EFECTO ESTELA DE CURSOR (Añadido el JS faltante)
+        document.addEventListener('mousemove', function(e) {
+            // Solo creamos estela si el dispositivo es manejado por mouse (no touch)
+            if (window.innerWidth > 768) {
+                const trail = document.createElement('div');
+                trail.className = 'cursor-trail';
+                trail.style.left = e.pageX + 'px';
+                trail.style.top = e.pageY + 'px';
+                document.body.appendChild(trail);
+                
+                // Limpiar del DOM para no sobrecargarlo
+                setTimeout(() => {
+                    trail.remove();
+                }, 800);
+            }
+        });
+
+        // FAQ Accordion
         const faqContainer = document.getElementById('faq-container');
         if (faqContainer) {
             faqContainer.addEventListener('click', function(e) {
@@ -556,86 +552,90 @@
             });
         }
         
-        // JavaScript para el contador de stock (adaptado de RENOVA+)
+        // Stock Counter Logic
         const stockElement = document.getElementById('stock-counter');
-        let stockCount = 20; // Stock para la talla S
-        const minStock = Math.floor(Math.random() * 5) + 2; // Detiene la cuenta en un número aleatorio entre 2 y 6
+        let stockCount = 18; 
+        const minStock = Math.floor(Math.random() * 4) + 2; // Detiene entre 2 y 5
 
         function updateStock() {
             if (stockCount > minStock) {
-                stockCount--;
+                // Reducir de a 1 o 2
+                const drop = Math.random() > 0.8 ? 2 : 1;
+                stockCount = Math.max(minStock, stockCount - drop);
                 stockElement.textContent = stockCount;
-            } else {
-                stockElement.textContent = `¡Últimas ${minStock} unidades!`;
+                
+                // Pequeño efecto visual al bajar
+                stockElement.parentElement.classList.add('scale-110', 'text-yellow-300');
+                setTimeout(() => {
+                    stockElement.parentElement.classList.remove('scale-110', 'text-yellow-300');
+                }, 300);
             }
             
-            // Establece un nuevo intervalo aleatorio para la próxima actualización
-            const randomInterval = Math.random() * 12000 + 8000; // 8-20 segundos
-            setTimeout(updateStock, randomInterval);
+            if (stockCount > minStock) {
+                const randomInterval = Math.random() * 15000 + 5000; // 5 a 20 seg
+                setTimeout(updateStock, randomInterval);
+            }
         }
+        setTimeout(updateStock, 8000); // Iniciar después de 8 seg
 
-        // Inicia el contador de stock después de un retraso inicial
-        setTimeout(updateStock, 10000); // Primera actualización después de 10 segundos
-
-        // JavaScript para ocultar la flecha de scroll
+        // Scroll Arrow Fade
         const scrollArrow = document.querySelector('.scroll-down-arrow');
         if (scrollArrow) {
             window.addEventListener('scroll', function() {
-                if (window.scrollY > 50) { // Oculta después de 50px de scroll
+                if (window.scrollY > 100) { 
                     scrollArrow.style.opacity = '0';
+                    scrollArrow.style.pointerEvents = 'none';
                 } else {
                     scrollArrow.style.opacity = '1';
+                    scrollArrow.style.pointerEvents = 'auto';
                 }
             });
         }
 
-        // JavaScript para notificaciones de 'social proof'
+        // Social Proof Logic
         const socialProofContainer = document.getElementById('social-proof-container');
-        const femaleNames = ["Javiera", "Sofía", "Isidora", "Antonella", "Valentina", "Camila", "Fernanda", "Catalina"];
-        const maleNames = ["Benjamín", "Matías", "Joaquín", "Agustín"];
-        const cities = ["Santiago", "Viña del Mar", "Concepción", "La Serena", "Antofagasta", "Temuco", "Rancagua", "Valparaíso"];
+        const femaleNames = ["Javiera", "Sofía", "Isidora", "Antonella", "Valentina", "Camila", "Fernanda", "Catalina", "Martina", "Daniela"];
+        const cities = ["Santiago", "Viña del Mar", "Concepción", "La Serena", "Antofagasta", "Temuco", "Rancagua", "Valparaíso", "Puerto Montt"];
         const actions = [
-            "acaba de comprar el Pack Dúo Mamá e Hija.",
-            "acaba de consultar por precios al por mayor.",
+            "acaba de comprar una Copa Menstrual Individual.",
             "acaba de comprar el Pack Niñas.",
-            "acaba de comprar una Copa Menstrual Individual."
+            "acaba de comprar una Copa Talla S.",
+            "acaba de comprar el Pack Amigas Primerizas."
         ];
 
         function showSocialProof() {
-            let randomName;
-            // Genera nombres de mujer el 80% del tiempo
-            if (Math.random() > 0.2) {
-                randomName = femaleNames[Math.floor(Math.random() * femaleNames.length)];
-            } else {
-                randomName = maleNames[Math.floor(Math.random() * maleNames.length)];
-            }
+            const randomName = femaleNames[Math.floor(Math.random() * femaleNames.length)];
             const randomCity = cities[Math.floor(Math.random() * cities.length)];
             const randomAction = actions[Math.floor(Math.random() * actions.length)];
 
             const popup = document.createElement('div');
             popup.className = 'social-proof-popup';
             popup.innerHTML = `
-                <p>
-                    <strong class="text-gray-900">${randomName}</strong> de ${randomCity}
-                    <span class="text-gray-600">${randomAction}</span>
-                </p>
-                <p class="text-xs text-gray-400 mt-1">hace ${Math.floor(Math.random() * 59) + 1} segundos</p>
+                <div class="flex items-start">
+                    <span class="text-green-500 mr-2 mt-0.5">✔️</span>
+                    <div>
+                        <p class="leading-tight">
+                            <strong class="text-gray-900">${randomName}</strong> de ${randomCity} <br>
+                            <span class="text-gray-600">${randomAction}</span>
+                        </p>
+                        <p class="text-[10px] text-gray-400 mt-1 uppercase tracking-wide">Hace ${Math.floor(Math.random() * 59) + 1} seg</p>
+                    </div>
+                </div>
             `;
 
             socialProofContainer.appendChild(popup);
 
             setTimeout(() => {
                 popup.remove();
-            }, 5000); // El popup desaparece después de 5 segundos
+            }, 5000); 
         }
 
-        // Muestra la primera notificación después de un breve retraso y luego lo repite
         setTimeout(() => {
             showSocialProof();
-            setInterval(showSocialProof, Math.random() * 10000 + 8000); // Nueva notificación cada 8-18 segundos
-        }, 5000); // Primera notificación después de 5 segundos
+            setInterval(showSocialProof, Math.random() * 12000 + 10000); // 10-22 segundos
+        }, 6000);
 
-        // Lógica para determinar la talla ideal
+        // Quiz Logic
         const tallaForm = document.getElementById('talla-form');
         const resultContainer = document.getElementById('talla-result');
         const resultText = document.getElementById('result-text');
@@ -650,17 +650,23 @@
             let resultTalla = '';
 
             if (age === 'under18' && sexualLife === 'no') {
-                resultTalla = 'XS';
+                resultTalla = 'Talla XS (Pack Niñas recomendado)';
             } else if ((age === '18to30' || sexualLife === 'yes') && normalBirth === 'no') {
-                resultTalla = 'S';
+                resultTalla = 'Talla S';
             } else if (age === 'over30' || normalBirth === 'yes') {
-                resultTalla = 'L';
+                resultTalla = 'Talla L';
             } else {
-                resultTalla = 'No se pudo determinar. Por favor, contáctanos.';
+                resultTalla = 'Talla L (Por defecto)';
             }
 
             resultText.textContent = `Tu talla ideal es: ${resultTalla}`;
             resultContainer.classList.remove('hidden');
+            
+            // Animación de aparición
+            resultContainer.classList.add('scale-95', 'opacity-0');
+            setTimeout(() => {
+                resultContainer.classList.remove('scale-95', 'opacity-0');
+            }, 50);
         });
     </script>
     
@@ -673,7 +679,3 @@
     </a>
 </body>
 </html>
-
-
-
-
